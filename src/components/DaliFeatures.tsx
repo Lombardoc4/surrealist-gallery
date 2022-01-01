@@ -6,7 +6,7 @@
  */
  import React, {FC, useEffect, useState} from 'react';
  import clsx from 'clsx';
- import styles from './DaliFeatures.module.css';
+ import './DaliFeatures.css';
 
  type FeatureItem = {
    title: string;
@@ -24,21 +24,26 @@
    'magritte': '15965'
  }
 
- function DaliCard({title, year, image, medium, copyright, origin}: FeatureItem) {
+ function DaliDetails({title, year, medium, copyright, origin}:FeatureItem) {
+   return(
+    <div className={clsx("col col--4 padding-horiz--md artworkDetails")}>
+    <h2>{title}</h2>
+    <p>{medium}<br/>
+    <i>{year}</i></p>
+    <a style={{fontSize: '12px'}}  href={origin} target="_blank">Read More @ The Art Institute of Chicago</a><br/>
+    <p className="copyright">
+      {copyright}
+      </p>
+</div>
+   )
+ }
+
+ function DaliCard({title, image}: FeatureItem) {
    return (
-       <div className={styles.artworkCard}>
-          <div className={clsx(styles.artworkImgContainer)}>
-            <img className={styles.artworkImg} alt={title} src={image} />
+       <div className="artworkCard">
+          <div className="artworkImgContainer">
+            <img className="artworkImg" alt={title} src={image} />
           </div>
-        <div className={clsx("px-3 col col--4 padding-horiz--md", styles.artworkDetails)}>
-            <h2>{title}</h2>
-            <p>{medium}<br/>
-            <i>{year}</i></p>
-            <a style={{fontSize: '12px'}}  href={origin} target="_blank">Read More @ The Art Institute of Chicago</a><br/>
-            <p className={styles.copyright}>
-              {copyright}
-              </p>
-        </div>
 
      </div>
    );
@@ -67,7 +72,8 @@ const ArtistFeature: FC<UserProps> = ({artist}): JSX.Element => {
     const [currArtwork, setCurrArtwork] = useState(defaultState);
     const [loading, setLoading] = useState(true);
 
-    console.log(artistID[currArtist] );
+    console.log('state', [loading, currArtwork, uiArtist, allArtwork]);
+
 
     const getRandomArtwork = () => {
       setLoading(true);
@@ -121,28 +127,34 @@ const ArtistFeature: FC<UserProps> = ({artist}): JSX.Element => {
     }
 
     useEffect(() => {
-        setArtist(artistID[currArtist]);
-        const fetchAllDali = async () => {
-            const res = await fetch(`https://api.artic.edu/api/v1/artists/${uiArtist}`);
-            return await res.json();
-        };
+      // setArtist(artistID[currArtist]);
+      const fetchArtistArt = async () => {
+        const res = await fetch(`https://api.artic.edu/api/v1/artists/${uiArtist}`);
+        return await res.json();
+      };
+      console.log('getData', artistID[currArtist])
 
         if (allArtwork.length >= 0) {
-            fetchAllDali().then(({data}) => {setAllArtwork(data.artwork_ids);})
+            fetchArtistArt().then(({data}) => {setAllArtwork(data.artwork_ids);})
         }
+
+
     }, [allArtwork.length, currArtist, uiArtist])
 
     // Sets current image
     useEffect(() => {
+      console.log('setUI')
+
         // if no artwork return
         if (allArtwork.length <= 0)
           return
 
         getRandomArtwork();
 
-    }, [allArtwork.length])
 
-    // console.log(allArtwork);
+      }, [allArtwork.length])
+
+      // console.log(allArtwork);
 
   return (
     < >
@@ -157,9 +169,10 @@ const ArtistFeature: FC<UserProps> = ({artist}): JSX.Element => {
         <div className="row">
         {loading ?
           <div className="lds-container">
-            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-          </div> :
-            <DaliCard {...currArtwork}/>
+            <div className="lds-roller"></div>
+          </div> : (
+            <><DaliCard {...currArtwork} /><DaliDetails {...currArtwork} /></>
+          )
           }
         </div>
       {/* </div> */}
