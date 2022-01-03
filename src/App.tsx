@@ -4,7 +4,7 @@ import './App.css';
 import Artists from './routes/artists';
 
 const FunkyHeader = () => (
-  <header className="flex flex-col">
+  <header className="flex items-end">
     <h1 className="text-3xl font-bold">
       <span style={{whiteSpace: 'nowrap'}}>
         {/* <span className="hidden xl:inline-block">🎨</span>{' '} */}
@@ -77,6 +77,7 @@ const FunkyHeader = () => (
       {/* {' '}<span className="hidden xl:inline-block">🎨</span> */}
 
     </h1>
+    <p className='uppercase text-sm'>Click image for new</p>
   </header>
 )
 

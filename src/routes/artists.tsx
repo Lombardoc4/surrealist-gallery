@@ -204,59 +204,50 @@ console.log('artworkID', artworkID);
 console.log('artwork', artwork);
 
   return (
-    <div className='flex h-5/6'>
+    <div className='flex h-5/6 my-auto'>
       <div className='mr-6 w-1/4'>
-        {
+        <div className=''>
+          {
           Object.values(artists).map(artist => (
             <NavLink
               key={artist.name}
               to={"/" + artist.slug}
-              className={"font-serif text-2xl w-100 my-4"}
+              className={({ isActive }) => "rounded active:bg-red-400 text-center py-1 font-serif text-2xl w-100 my-4 " + (isActive ? "hover:bg-red-500 bg-red-400" : "hover:bg-cyan-400 bg-cyan-300")}
               style={({ isActive }) => {
                 return {
                   display: "block",
-                  color: isActive ? "red" : "",
-                  textDecoration: isActive ? "underline" : ""
                 };}}
             >
               {artist.name}
             </NavLink>
           ))
         }
+        </div>
 
-          {artist &&
-          <div>
-            {/* This is where the info goes: {artist.name}<br/> */}
-            {/* This is where the info goes: {artist.id}<br/> */}
-            {/* This is the artworks: {artist.art} */}
-          </div>
-          }
+        <hr/>
 
-          {/* {artworkID &&
-            <h1>This is the selected artwork: {artworkID}</h1>
-          } */}
-          <hr></hr>
           {artwork &&
             <div className="pt-2 h-1/2 flex flex-col">
-              <h2 className='text-center text-2xl'>{artwork.title}</h2>
+              <h2 className='text-3xl font-bold'>{artwork.title}</h2>
 
               <p className='text-sm text-right'>
                 <i>{artwork.year}</i><br/>
                 {artwork.medium}
               </p>
               <div className='mt-auto'>
-                <p className='text-xs'>
+                <p className='text-[0.6rem]'>
                   {artwork.copyright}
-                  </p>
-                <a className='text-sm underline' href={artwork.origin} target="_blank" rel="noreferrer">More @ The Art Institute of Chicago</a><br/>
+                  <hr className='my-1'/>
+                  <a className='underline leading-none' href={artwork.origin} target="_blank" rel="noreferrer">Read More</a> (The Art Institute of Chicago)<br/>
+                </p>
               </div>
             </div>
           }
       </div>
 
       {artwork &&
-      <div className=' h-full container'>
-        <img className="artworkImg h-full mx-auto" alt={artwork.title} src={artwork.image} />
+      <div className=' h-full container p-5'>
+        <img onClick={()=> {setArtworkID(artist.art[Math.floor(Math.random() * artist.art.length)])}} className="hover:cursor-pointer shadow-xl artworkImg h-full mx-auto" alt={artwork.title} src={artwork.image} />
       </div>
       }
     </div>
