@@ -195,6 +195,10 @@ export default function Artists(): JSX.Element {
 
     allArtworks[artworkID] = (parsedArtwork);
     setArtwork(parsedArtwork);
+    const artworkTimeout = setTimeout(() => {
+      setArtworkID(artist.art[Math.floor(Math.random() * artist.art.length)])
+    }, 15000)
+    return () => clearTimeout(artworkTimeout);
   })
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [artworkID])
@@ -203,13 +207,13 @@ export default function Artists(): JSX.Element {
 
   return (
     <div className='flex h-full my-auto'>
-      <div className='bg-white mr-6 w-1/2 border rounded-lg shadow-neu p-4 overflow-hidden'>
+      <div className='bg-white mr-6 w-1/3 border rounded-lg shadow-neu p-4 overflow-hidden'>
 
 
         <FunkyHeader/>
 
           {artwork &&
-            <div className="h-1/2 flex flex-col">
+            <div className="h-2/5 flex flex-col">
               <hr className='mb-2'/>
               <div className='my-auto'>
               <h2 className='text-3xl font-bold font-serif'>{artwork.title}</h2>
@@ -223,7 +227,9 @@ export default function Artists(): JSX.Element {
               <div className='mt-auto'>
                 <p className='text-[0.6rem]'>
                   {artwork.copyright}
+                </p>
                   <hr className='my-1'/>
+                <p className='text-[0.6rem]'>
                   <a className='underline leading-none' href={artwork.origin} target="_blank" rel="noreferrer">Read More</a> (The Art Institute of Chicago)<br/>
                 </p>
               </div>
