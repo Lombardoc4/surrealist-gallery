@@ -3,8 +3,8 @@ import React from 'react';
 import './App.css';
 import Artists from './routes/artists';
 
-const FunkyHeader = () => (
-  <header className="flex items-end">
+export const FunkyHeader = () => (
+  <header className="flex flex-col ">
     <h1 className="text-3xl font-bold">
       <span style={{whiteSpace: 'nowrap'}}>
         {/* <span className="hidden xl:inline-block">🎨</span>{' '} */}
@@ -44,7 +44,7 @@ const FunkyHeader = () => (
         </span>&#x2060;<span className="underline decoration-cyan-400 italic font-sans">r</span>&#x2060;
         <span className="font-serif uppercase" style={{textShadow: "2px -2px yellow, 3px -3px black"}}>t</span>
       </span>
-      {' '}
+      {''}
       <span  style={{whiteSpace: 'nowrap'}}>
         <span className="font-serif italic">G</span>
         <span className="text-2xl before:content-['\00e4'] before:block before:absolute before:text-red-600 relative inline-block">
@@ -77,7 +77,7 @@ const FunkyHeader = () => (
       {/* {' '}<span className="hidden xl:inline-block">🎨</span> */}
 
     </h1>
-    <p className='uppercase text-sm'>Click image for new</p>
+    <p className='uppercase text-sm py-2 ml-auto'>Click image for new</p>
   </header>
 )
 
@@ -85,7 +85,7 @@ const FunkyHeader = () => (
 function App() {
   return (
     <>
-      <FunkyHeader/>
+      {/* <FunkyHeader/> */}
       <Artists/>
     </>
   );

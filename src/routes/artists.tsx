@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 // import DaliFeatures from '../components/DaliFeatures';
 import { useParams, useNavigate, NavLink } from "react-router-dom";
+import { FunkyHeader } from '../App';
 
 const nonBreakHyphen = document.createTextNode("\u00A0");
 const artists = {
@@ -122,13 +123,12 @@ export default function Artists(): JSX.Element {
   const [artist, setArtist] = useState(artists[artistParams]);
   const [artworkID, setArtworkID] = useState(artist?.art[Math.floor(Math.random() * artist?.art.length)])
   const [artwork, setArtwork] = useState<FeatureItem>(artist?.art[Math.floor(Math.random() * artist?.art.length)])
-
   // let artist = useArtist(params?.artist);
   // let artwork = useArtwork({id: artist.art[Math.floor(Math.random() * artist.art.length)]})
   // console.log('params', params);
 
   // const [artCollection, addToCollection] = useState({[artist.slug]: {}});
-
+  // TODO: SetTimeout to get new image
 
   useEffect(() => {
     if (!params.artist) {
@@ -199,41 +199,27 @@ export default function Artists(): JSX.Element {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [artworkID])
 
-console.log('artist', artist);
-console.log('artworkID', artworkID);
-console.log('artwork', artwork);
+
 
   return (
-    <div className='flex h-5/6 my-auto'>
-      <div className='mr-6 w-1/4'>
-        <div className=''>
-          {
-          Object.values(artists).map(artist => (
-            <NavLink
-              key={artist.name}
-              to={"/" + artist.slug}
-              className={({ isActive }) => "rounded active:bg-red-400 text-center py-1 font-serif text-2xl w-100 my-4 " + (isActive ? "hover:bg-red-500 bg-red-400" : "hover:bg-cyan-400 bg-cyan-300")}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                };}}
-            >
-              {artist.name}
-            </NavLink>
-          ))
-        }
-        </div>
+    <div className='flex h-full my-auto'>
+      <div className='bg-white mr-6 w-1/2 border rounded-lg shadow-neu p-4 overflow-hidden'>
 
-        <hr/>
+
+        <FunkyHeader/>
 
           {artwork &&
-            <div className="pt-2 h-1/2 flex flex-col">
-              <h2 className='text-3xl font-bold'>{artwork.title}</h2>
+            <div className="h-1/2 flex flex-col">
+              <hr className='mb-2'/>
+              <div className='my-auto'>
+              <h2 className='text-3xl font-bold font-serif'>{artwork.title}</h2>
 
               <p className='text-sm text-right'>
-                <i>{artwork.year}</i><br/>
-                {artwork.medium}
+                <span className='italic'>{artwork.year}</span>
+                <br/>
+                <span className='font-bold'>{artwork.medium}</span>
               </p>
+              </div>
               <div className='mt-auto'>
                 <p className='text-[0.6rem]'>
                   {artwork.copyright}
@@ -243,11 +229,25 @@ console.log('artwork', artwork);
               </div>
             </div>
           }
+          <div className='h-1/3 mt-4 grid'>
+           {
+          Object.values(artists).map(artist => (
+            <div
+            key={artist.name}>
+            <NavLink
+              to={"/" + artist.slug}
+              className={({ isActive }) => "font-bold uppercase  hover:text-zinc-700 shadow-neu block rounded-full active:bg-red-400 text-center p-4 font-serif text-2xl w-100 my-4  hover:bg-gradient-to-bl  from-zinc-200 to-white " + (isActive ? "to-cyan-300 bg-cyan-200 text-zinc-500" : "bg-white text-zinc-400")}
+              >
+              {artist.name}
+            </NavLink>
+            </div>
+          ))
+        }</div>
       </div>
 
       {artwork &&
-      <div className=' h-full container p-5'>
-        <img onClick={()=> {setArtworkID(artist.art[Math.floor(Math.random() * artist.art.length)])}} className="hover:cursor-pointer shadow-xl artworkImg h-full mx-auto" alt={artwork.title} src={artwork.image} />
+      <div className=' h-full container flex p-5'>
+        <img onClick={()=> {setArtworkID(artist.art[Math.floor(Math.random() * artist.art.length)])}} className="hover:cursor-pointer shadow-2xl artworkImg max-h-full h-auto m-auto" alt={artwork.title} src={artwork.image} />
       </div>
       }
     </div>
