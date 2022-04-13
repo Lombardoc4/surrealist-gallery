@@ -10,6 +10,12 @@ import {
 } from "react-router-dom";
 
 
+declare global {
+  interface Window {
+    artworkTimeout?: any;
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

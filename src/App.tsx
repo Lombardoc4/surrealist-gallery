@@ -5,23 +5,23 @@ import Artists from './routes/artists';
 
 export const FunkyHeader = () => (
   <header className="flex flex-col ">
-    <h1 className="text-6xl font-bold">
+    <h1 className="text-2xl font-bold">
       <span style={{whiteSpace: 'nowrap'}}>
         {/* <span className="hidden xl:inline-block">🎨</span>{' '} */}
         <span style={{textShadow: "-2px 2px yellow, -3px 3px black"}}>S</span>
 
-        <span className="text-4xl before:content-['\016f'] before:block before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:text-red-600 relative inline-block">
-          <span className="relative text-5xl">
+        <span className="text-xl before:content-['\016f'] before:block before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:text-red-600 relative inline-block">
+          <span className="relative text-xl">
             &#367;
           </span>
         </span>
         <span className="italic underline decoration-cyan-400">rr</span>
-        <span className="text-5xl before:content-['\00eb'] before:block before:absolute before:text-red-600 relative inline-block">
+        <span className="text-xl before:content-['\00eb'] before:block before:absolute before:text-red-600 relative inline-block">
           <span className="relative">
             e
           </span>
         </span>
-        <span className="text-5xl before:content-['\00e4'] before:block before:absolute before:text-red-600 relative inline-block">
+        <span className="text-xl before:content-['\00e4'] before:block before:absolute before:text-red-600 relative inline-block">
           <span className="relative">
             a
           </span>
@@ -37,7 +37,7 @@ export const FunkyHeader = () => (
       </span>
       {' '}
       <span  style={{whiteSpace: 'nowrap'}}>
-        <span className="font-serif text-5xl before:content-['\00c4'] before:block before:absolute before:text-red-600 relative inline-block">
+        <span className="font-serif text-xl before:content-['\00c4'] before:block before:absolute before:text-red-600 relative inline-block">
           <span className="relative">
             A
           </span>
@@ -47,7 +47,7 @@ export const FunkyHeader = () => (
       {''}
       <span  style={{whiteSpace: 'nowrap'}}>
         <span className="font-serif italic">G</span>
-        <span className="text-5xl before:content-['\00e4'] before:block before:absolute before:text-red-600 relative inline-block">
+        <span className="text-xl before:content-['\00e4'] before:block before:absolute before:text-red-600 relative inline-block">
           <span className="relative">
             a
           </span>
@@ -62,14 +62,14 @@ export const FunkyHeader = () => (
             L
           </span>
         </span>
-        <span className="text-5xl before:content-['\00eb'] before:block before:absolute before:text-red-600 relative inline-block">
+        <span className="text-2xl before:content-['\00eb'] before:block before:absolute before:text-red-600 relative inline-block">
           <span className="relative">
             e
           </span>
         </span>
         <span className="italic underline decoration-cyan-400">r</span>&#x2060;
-        <span className="px-1 font-mono font-light text-4xl before:content-['y'] before:block before:absolute before:top-1/2 before:left-1/4 before:-translate-x-1/4 before:-translate-y-1/2 before:text-red-600 relative inline-block">
-          <span className="relative text-5xl">
+        <span className="px-1 font-mono font-light text-xl before:content-['y'] before:block before:absolute before:top-1/2 before:left-1/4 before:-translate-x-1/4 before:-translate-y-1/2 before:text-red-600 relative inline-block">
+          <span className="relative text-2xl">
             y
           </span>
         </span>
