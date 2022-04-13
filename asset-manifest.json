@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/surrealist-gallery/static/css/main.af176323.css",
-    "main.js": "/surrealist-gallery/static/js/main.781a714c.js",
+    "main.js": "/surrealist-gallery/static/js/main.e63f16a0.js",
     "index.html": "/surrealist-gallery/index.html",
     "main.af176323.css.map": "/surrealist-gallery/static/css/main.af176323.css.map",
-    "main.781a714c.js.map": "/surrealist-gallery/static/js/main.781a714c.js.map"
+    "main.e63f16a0.js.map": "/surrealist-gallery/static/js/main.e63f16a0.js.map"
   },
   "entrypoints": [
     "static/css/main.af176323.css",
-    "static/js/main.781a714c.js"
+    "static/js/main.e63f16a0.js"
   ]
 }
